@@ -143,7 +143,7 @@ image make_gaussian_filter(float sigma)
     if (n % 2 == 0) n++;
 
     image filter = make_image(n, n, 1);
-    float sigma_sqr = pow(sigma, 2);
+    float sigma_sqr = powf(sigma, 2);
 
     float multiplier = 1 / (TWOPI * sigma_sqr);
 
@@ -151,7 +151,7 @@ image make_gaussian_filter(float sigma)
     {
         for (int x = 0; x < n; x++)
         {
-            float v = multiplier * exp(-((pow(x - n / 2, 2) + pow(y - n / 2, 2))/(2 * sigma_sqr)));
+            float v = multiplier * exp(-((powf(x - n / 2, 2) + powf(y - n / 2, 2))/(2 * sigma_sqr)));
             set_pixel(filter, x, y, 0, v);
         }
     }
@@ -269,7 +269,7 @@ image *sobel_image(image im)
         {
             float x_v = get_pixel(x_gradient, x, y , 0);
             float y_v = get_pixel(y_gradient, x, y , 0);
-            float magnitude = sqrtf(pow(x_v, 2) + pow(y_v, 2));
+            float magnitude = sqrtf(powf(x_v, 2) + powf(y_v, 2));
             float direction = atan2(y_v, x_v);  
             set_pixel(sobel[0], x, y, 0, magnitude);
             set_pixel(sobel[1], x, y, 0, direction);
