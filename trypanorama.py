@@ -46,6 +46,10 @@ def field_panorama():
     im7 = load_image("data/field7.jpg")
     im8 = load_image("data/field8.jpg")
 
+    my_img = cylindrical_project(im1, 10000)
+    save_image(my_img, "cylindrical_projection")
+
+
     im1 = cylindrical_project(im1, 1200)
     im2 = cylindrical_project(im2, 1200)
     im3 = cylindrical_project(im3, 1200)
@@ -70,6 +74,6 @@ def field_panorama():
 draw_corners()
 draw_matches()
 easy_panorama()
-#rainier_panorama()
-#field_panorama()
+# rainier_panorama()
+field_panorama()
 

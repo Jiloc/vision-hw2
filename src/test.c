@@ -386,7 +386,7 @@ void test_cornerness()
 
 void run_tests()
 {
-    //test_matrix();
+    // test_matrix();
     test_get_pixel();
     test_set_pixel();
     test_copy();
@@ -408,6 +408,17 @@ void run_tests()
     test_sobel();
     test_structure();
     test_cornerness();
+
+    image im1 = load_image("data/Rainier1.png");
+    detect_and_draw_corners(im1, 2, 50, 3);
+    save_image(im1, "corners2");
+
+
+    image a = load_image("data/Rainier1.png");
+    image b = load_image("data/Rainier2.png");
+    image m = find_and_draw_matches(a, b, 2, 50, 3);
+    save_image(m, "matches");
+
     printf("%d tests, %d passed, %d failed\n", tests_total, tests_total-tests_fail, tests_fail);
 }
 

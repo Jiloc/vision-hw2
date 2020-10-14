@@ -202,9 +202,9 @@ image nms_image(image im, int w)
     float min_float = -999999;
     image r = copy_image(im);
     // for every pixel in the image:
-    for (size_t y = 0; y < r.h; y++)
+    for (int y = 0; y < r.h; y++)
     {
-        for (size_t x = 0; x < r.w; x++)
+        for (int x = 0; x < r.w; x++)
         {
             float v = get_pixel(r, x, y, 0);
             // if (v == min_float){
@@ -212,9 +212,9 @@ image nms_image(image im, int w)
             // }
             // for neighbors within w:
             int found = 0;
-            for (size_t y1 = MAX(0, (y - w)); y1 <= y + w && y1 < r.h && !found; y1++)
+            for (int y1 = MAX(0, (y - w)); y1 <= y + w && y1 < r.h && !found; y1++)
             {
-                for (size_t x1 = MAX(0, (x - w)); x1 <= x + w && x1 < r.w; x1++)
+                for (int x1 = MAX(0, (x - w)); x1 <= x + w && x1 < r.w; x1++)
                 {
                     // if neighbor response greater than pixel response:
                     if (get_pixel(im, x1, y1, 0) > v)
